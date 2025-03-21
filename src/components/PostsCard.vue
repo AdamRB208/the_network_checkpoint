@@ -10,7 +10,10 @@ defineProps({
 
 
 <template>
-  <div class="card border-dark d-flex justify-content-center mb-3" style="width: 18rem;">
+  <div class="card border-dark d-flex justify-content-center mb-3">
+    <div>
+      <img :src="postProp.creator.picture" alt="creator profile picture">
+    </div>
     <img :src="postProp.imgUrl" class="card-img-top" alt="users profile picture">
     <div class="card-body">
       <p class="card-text">{{ postProp.body }}</p>
@@ -29,8 +32,6 @@ card {
   border-width: thick;
 }
 
-img {
-  border-radius: 50;
-
-}
-</style>
+// img {
+//   border-radius: 50;
+// }</style>
