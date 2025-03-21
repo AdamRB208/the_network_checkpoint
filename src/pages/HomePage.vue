@@ -1,8 +1,14 @@
 <script setup>
+import { AppState } from '@/AppState.js';
 import { postsService } from '@/services/PostsService.js';
-import { logger } from '@/utils/Logger.js';
+import { logger } from '@/utils/Logger.js'; ``
 import { Pop } from '@/utils/Pop.js';
-import { onMounted } from 'vue';
+import { computed, onMounted } from 'vue';
+import PostsCard from '@/components/PostsCard.vue';
+import { Post } from '@/models/Post.js';
+
+
+const posts = computed(() => AppState.post)
 
 onMounted(() => {
   getPosts()
@@ -24,23 +30,15 @@ async function getPosts() {
   <section class="container">
     <div class="row">
       <div class="col-md-9">
-        <!-- <div class="card" style="width: 18rem;">
-          <img src="..." class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.</p>
+        <!-- <p>{{ posts }}</p> -->
+        <section class="container">
+          <div class="row">
+            <div v-for="post in posts" :key="post.id" class="col-md-10">
+              <PostsCard />
+              <PostsCard :postProp="Post" />
+            </div>
           </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">An item</li>
-            <li class="list-group-item">A second item</li>
-            <li class="list-group-item">A third item</li>
-          </ul>
-          <div class="card-body">
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-          </div>
-        </div> -->
+        </section>
       </div>
     </div>
   </section>
