@@ -4,8 +4,8 @@ import { postsService } from '@/services/PostsService.js';
 import { logger } from '@/utils/Logger.js'; ``
 import { Pop } from '@/utils/Pop.js';
 import { computed, onMounted } from 'vue';
-import PostsCard from '@/components/PostsCard.vue';
-import { Post } from '@/models/Post.js';
+import PostsCard from '../components/PostsCard.vue';
+
 
 
 const posts = computed(() => AppState.post)
@@ -30,12 +30,11 @@ async function getPosts() {
   <section class="container">
     <div class="row">
       <div class="col-md-9">
-        <!-- <p>{{ posts }}</p> -->
+        <p>Posts</p>
         <section class="container">
           <div class="row">
             <div v-for="post in posts" :key="post.id" class="col-md-10">
-              <PostsCard />
-              <PostsCard :postProp="Post" />
+              <PostsCard :postProp="post" />
             </div>
           </div>
         </section>
