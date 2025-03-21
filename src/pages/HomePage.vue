@@ -36,6 +36,24 @@ async function getPosts() {
   </section>
   <section class="container">
     <div class="row">
+      <div class="col-md-10">
+        <form class="row g-3">
+          <div>
+            <img src="" alt="">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Post Something Here!</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          </div>
+          <div>
+            <button type="submit" class="btn btn-primary mb-3 mdi mdi-draw-pen">Post</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+  <section class="container">
+    <div class="row">
       <div v-for="post in posts" :key="post.id" class="col-md-10 d-flex justify-content-center">
         <PostsCard :postProp="post" />
       </div>

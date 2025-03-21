@@ -10,7 +10,7 @@ defineProps({
 
 
 <template>
-  <div class="card d-flex justify-content-center mb-3" style="width: 18rem;">
+  <div class="card border-dark d-flex justify-content-center mb-3" style="width: 18rem;">
     <img :src="postProp.imgUrl" class="card-img-top" alt="users profile picture">
     <div class="card-body">
       <p class="card-text">{{ postProp.body }}</p>
