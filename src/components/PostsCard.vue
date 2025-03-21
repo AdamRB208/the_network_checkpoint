@@ -12,7 +12,7 @@ defineProps({
 <template>
   <div class="card border-dark d-flex justify-content-center mb-3">
     <div>
-      <img :src="postProp.creator.picture" alt="creator profile picture">
+      <img :src="postProp.creator.picture" alt="profile picture" type="button">
     </div>
     <img :src="postProp.imgUrl" class="card-img-top" alt="users profile picture">
     <div class="card-body">
@@ -32,6 +32,7 @@ card {
   border-width: thick;
 }
 
-// img {
-//   border-radius: 50;
-// }</style>
+img {
+  border-radius: 50;
+}
+</style>

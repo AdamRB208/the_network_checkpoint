@@ -1,0 +1,6 @@
+
+class ProfilesService {
+  async getProfileById() {
+
+  }
+}
