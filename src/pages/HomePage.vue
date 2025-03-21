@@ -29,18 +29,23 @@ async function getPosts() {
 <template>
   <section class="container">
     <div class="row">
-      <div class="col-md-9">
+      <div class="col-12 fs-1 d-flex justify-content-center">
         <p>Posts</p>
-        <section class="container">
-          <div class="row">
-            <div v-for="post in posts" :key="post.id" class="col-md-10">
-              <PostsCard :postProp="post" />
-            </div>
-          </div>
-        </section>
       </div>
     </div>
   </section>
+  <section class="container">
+    <div class="row">
+      <div v-for="post in posts" :key="post.id" class="col-md-10 d-flex justify-content-center">
+        <PostsCard :postProp="post" />
+      </div>
+    </div>
+  </section>
+
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+section {
+  background-color: rgb(123, 249, 123);
+}
+</style>
