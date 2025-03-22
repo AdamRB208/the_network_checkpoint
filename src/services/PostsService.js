@@ -23,7 +23,7 @@ class PostsService {
   }
 
   async deletePost(postId) {
-    const response = await api.delete(`api/post/${postId}`)
+    const response = await api.delete(`api/posts/${postId}`)
     logger.log('DELETED POST!', response.data)
     const post = AppState.post
     const postIndex = post.findIndex(post => post.id == postId)
