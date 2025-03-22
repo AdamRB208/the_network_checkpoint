@@ -1,5 +1,11 @@
 <script setup>
+import { AppState } from '@/AppState.js';
 import { Post } from '@/models/Post.js';
+import { Profile } from '@/models/Profile.js';
+import { postsService } from '@/services/PostsService.js';
+import { logger } from '@/utils/Logger.js';
+import { Pop } from '@/utils/Pop.js';
+import { computed } from 'vue';
 
 
 
@@ -9,7 +15,20 @@ defineProps({
   postProp: { type: Post, required: true },
 
 })
+const profile = computed(() => AppState.profile)
 
+async function deletePost(postId) {
+  try {
+    const confirmed = await Pop.confirm('Are you sure you want to delete this post?', 'It will be gone forever!', 'Yes I am sure', 'Ive changed my mind')
+    if (!confirmed) {
+      return
+    }
+    await postsService.deletePost(postId)
+  } catch (error) {
+    Pop.error(error, 'Could not delete house')
+    logger.error('COULD NOT DELETE HOUSE', error)
+  }
+}
 
 </script>
 
@@ -32,6 +51,10 @@ defineProps({
         <ul class="list-group list-group-flush">
           <li class="list-group-item mdi mdi-heart-outline">{{ postProp.likeIds.length }}</li>
         </ul>
+        <!-- NOTE may need v-if when profile is working -->
+        <button @click="deletePost(postProp.id)" class="btn btn-outline-dark" type="button">
+          Delete Post
+        </button>
       </div>
     </div>
   </div>

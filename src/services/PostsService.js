@@ -21,6 +21,14 @@ class PostsService {
     AppState.post.push(post)
 
   }
+
+  async deletePost(postId) {
+    const response = await api.delete(`api/post/${postId}`)
+    logger.log('DELETED POST!', response.data)
+    const post = AppState.post
+    const postIndex = post.findIndex(post => post.id == postId)
+    post.splice(postIndex, 1)
+  }
 }
 
 export const postsService = new PostsService()
