@@ -37,16 +37,16 @@ async function getPosts() {
   <section class="container">
     <div class="row">
       <div class="col-md-10">
-        <form class="row g-3">
+        <form class="row mb-3">
           <div>
             <img src="" alt="">
           </div>
           <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">Post Something Here!</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <textarea class="form-control" id="TextArea" rows="3">...</textarea>
           </div>
           <div>
-            <button type="submit" class="btn btn-primary mb-3 mdi mdi-draw-pen">Post</button>
+            <button type="submit" class="btn btn-primary mb-3 mdi mdi-lead-pencil fs-5">Post</button>
           </div>
         </form>
       </div>
@@ -63,7 +63,9 @@ async function getPosts() {
 </template>
 
 <style scoped lang="scss">
-section {
-  background-color: rgb(123, 249, 123);
+form {
+  border-style: solid;
+  border-width: 2px;
+  box-shadow: 10px 10px 5px rgb(119, 120, 121);
 }
 </style>
