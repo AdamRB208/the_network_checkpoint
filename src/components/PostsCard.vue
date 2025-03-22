@@ -3,9 +3,13 @@ import { Post } from '@/models/Post.js';
 
 
 
+
+
 defineProps({
-  postProp: { type: Post, required: true }
+  postProp: { type: Post, required: true },
+
 })
+
 
 </script>
 
@@ -15,8 +19,11 @@ defineProps({
     <div class="col-md-10">
       <div class="card border-dark mb-3">
         <div>
-          <img :src="postProp.creator.picture" alt="profile picture of profile.name" type="button" class="creator-img">
-          <span></span>
+          <RouterLink :to="{ name: 'Profile', params: { id: postProp.creatorId } }">
+            <img :src="postProp.creator.picture" alt="profile picture of ${postProp.creator.name}"
+              :title="postProp.creator.name" type="button" class="creator-img">
+          </RouterLink>
+          <span>{{ postProp.creator.name }}</span>
         </div>
         <img :src="postProp.imgUrl" class="card-img-top" alt="users profile picture">
         <div class="card-body">
