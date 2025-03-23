@@ -11,6 +11,10 @@ import PostsCard from '../components/PostsCard.vue';
 
 const posts = computed(() => AppState.post)
 
+const currentPage = computed(() => AppState.currentPage)
+
+const totalPages = computed(() => AppState.totalPages)
+
 
 onMounted(() => {
   getPosts()
@@ -38,6 +42,15 @@ async function createPost() {
   } catch (error) {
     Pop.error(error, 'Could not create post')
     logger.error('COULD NOT CREATE POST', error)
+  }
+}
+
+async function getNextPage(pageNumber) {
+  try {
+    await postsService.changeHomePage(pageNumber)
+  } catch (error) {
+    Pop.error(error, 'could not get next page')
+    logger.error('COULD NOT GET NEXT PAGE', error)
   }
 }
 
@@ -80,6 +93,20 @@ async function createPost() {
       <div v-for="post in posts" :key="post.id" class="col-md-10 d-flex justify-content-center">
         <PostsCard :postProp="post" />
       </div>
+    </div>
+  </section>
+  <section class="container">
+    <div class="row">
+      <button :disabled="currentPage == 1" @click="getNextPage(currentPage - 1)"
+        class="col-md-3 btn btn-outline-success mt-2 text-success">
+        previous
+      </button>
+      <div class="col-md-2 text-center align-content-center text-success"> Page {{ currentPage }}
+      </div>
+      <button :disabled="currentPage == 35" @click="getNextPage(currentPage + 1)"
+        class="col-md-3 btn btn-outline-success mt-2 text-success">
+        next
+      </button>
     </div>
   </section>
 </template>

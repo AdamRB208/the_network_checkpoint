@@ -29,6 +29,16 @@ class PostsService {
     const postIndex = post.findIndex(post => post.id == postId)
     post.splice(postIndex, 1)
   }
+
+  async changeHomePage(pageNumber) {
+    const response = await api.get(`api/posts?page=${pageNumber}`)
+    logger.log('changed home page', response.data)
+    const post = response.data.posts.map(pojo => new Post(pojo))
+    AppState.post = post
+    AppState.currentPage = response.data.page
+    AppState.totalPages = response.data.totalPages
+  }
+
 }
 
 export const postsService = new PostsService()

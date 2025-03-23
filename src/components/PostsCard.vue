@@ -9,8 +9,6 @@ import { computed } from 'vue';
 
 
 
-
-
 defineProps({
   postProp: { type: Post, required: true },
 
@@ -51,7 +49,7 @@ async function deletePost(postId) {
         <ul class="list-group list-group-flush">
           <li class="list-group-item mdi mdi-heart-outline">{{ postProp.likeIds.length }}</li>
         </ul>
-        <!-- NOTE may need v-if when profile is working -->
+        <!-- NOTE may need v-if when profile is working to set conditional-->
         <button @click="deletePost(postProp.id)" class="btn btn-outline-dark" type="button">
           Delete Post
         </button>
