@@ -7,18 +7,22 @@ import { computed } from 'vue';
 
 const posts = computed(() => AppState.post)
 
+defineProps({
+  profileProp: { type: Profile, required: true }
+})
+
+
 </script>
 
 
 <template>
-  Profiles Page
   <section class="container">
     <div class="row">
       <div class="col-md-8">
         <h1>name</h1>
         <div>
-          <span class="me-3">picture</span>
-          <span>coverImg</span>
+          <span class="me-3 mb-4">picture</span>
+          <span class="mb-4">coverImg</span>
         </div>
         <div>
           <p>email</p>
