@@ -8,7 +8,6 @@ import PostsCard from '../components/PostsCard.vue';
 
 
 
-
 const posts = computed(() => AppState.post)
 
 const currentPage = computed(() => AppState.currentPage)
@@ -20,6 +19,7 @@ onMounted(() => {
   getPosts()
   createPost()
 })
+
 
 const editablePostData = ref({
   body: '',

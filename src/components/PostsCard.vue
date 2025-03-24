@@ -28,6 +28,7 @@ async function deletePost(postId) {
   }
 }
 
+
 </script>
 
 
@@ -50,7 +51,7 @@ async function deletePost(postId) {
           <li class="list-group-item mdi mdi-heart-outline">{{ postProp.likeIds.length }}</li>
         </ul>
         <!-- NOTE may need v-if when profile is working to set conditional-->
-        <button @click="deletePost(postProp.id)" class="btn btn-outline-dark" type="button">
+        <button @click="deletePost(postProp.id)" class="btn btn-outline-red" type="button">
           Delete Post
         </button>
       </div>
