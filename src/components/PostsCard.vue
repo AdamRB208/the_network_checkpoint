@@ -35,14 +35,14 @@ async function deletePost(postId) {
 
 
 <template>
-  <!-- TODO add createdAt here and make sure your reformat the date -->
   <div class="row">
     <div class="col-md-10">
       <div class="card border-dark mb-3">
         <div>
           <RouterLink :to="{ name: 'Profile', params: { id: postProp.creatorId } }">
-            <img :src="postProp.creator.picture" alt="profile picture of ${postProp.creator.name}"
-              :title="postProp.creator.name" type="button" class="creator-img">
+            <img v-if="postProp.creatorId != ''" :src="postProp.creator.picture"
+              alt="profile picture of ${postProp.creator.name}" :title="postProp.creator.name" type="button"
+              class="creator-img">
           </RouterLink>
           <span>{{ postProp.creator.name }}</span>
           <small class="ms-5">{{ postProp.createdAt.toLocaleDateString() }}</small>

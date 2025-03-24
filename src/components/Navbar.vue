@@ -33,9 +33,9 @@ watch(theme, () => {
         <ul class="navbar-nav">
           <li>
             <!-- FIXME take this out if you are not using the about page -->
-            <RouterLink :to="{ name: 'About' }" class="btn text-green selectable">
+            <!-- <RouterLink :to="{ name: 'About' }" class="btn text-green selectable">
               About
-            </RouterLink>
+            </RouterLink> -->
           </li>
           <li>
             <RouterLink :to="{ name: 'Account' }" class="btn text-green selectable">

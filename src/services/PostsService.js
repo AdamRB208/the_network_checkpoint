@@ -18,8 +18,7 @@ class PostsService {
     const response = await api.post('api/posts', postData)
     logger.log('created post', response.data)
     const post = new Post(response.data)
-    // TODO instead of pushing, use unshift instead
-    AppState.post.push(post)
+    AppState.post.unshift(post)
 
   }
 

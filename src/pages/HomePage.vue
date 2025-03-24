@@ -72,13 +72,11 @@ async function getNextPage(pageNumber) {
           </div>
           <div class="mb-3">
             <label for="body" class="form-label">Post Something Here!</label>
-            <!-- FIXME this should be required -->
             <textarea v-model="editablePostData.body" class="form-control" id="body" name="body" type="text"
               placeholder="..." maxlength="5000" required>...</textarea>
           </div>
           <div class="mb-3">
             <label for="imgUrl" class="me-3">Post An Image</label>
-            <!-- FIXME this should not be required -->
             <input v-model="editablePostData.imgUrl" id="houseImgUrl" name="houseImgUrl" type="url" maxlength="500"
               placeholder="Image URL..." class="">
           </div>
