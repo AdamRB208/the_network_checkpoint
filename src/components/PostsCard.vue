@@ -15,6 +15,8 @@ defineProps({
 })
 const profile = computed(() => AppState.profile)
 
+const account = computed(() => AppState.account)
+
 async function deletePost(postId) {
   try {
     const confirmed = await Pop.confirm('Are you sure you want to delete this post?', 'It will be gone forever!', 'Yes I am sure', 'Ive changed my mind')
@@ -33,6 +35,7 @@ async function deletePost(postId) {
 
 
 <template>
+  <!-- TODO add createdAt here and make sure your reformat the date -->
   <div class="row">
     <div class="col-md-10">
       <div class="card border-dark mb-3">
@@ -42,16 +45,19 @@ async function deletePost(postId) {
               :title="postProp.creator.name" type="button" class="creator-img">
           </RouterLink>
           <span>{{ postProp.creator.name }}</span>
+          <small class="ms-5">{{ postProp.createdAt.toLocaleDateString() }}</small>
         </div>
-        <img :src="postProp.imgUrl" class="card-img-top" alt="users profile picture">
+        <!-- FIXME don't show this img tag if there is no imgUrl (v-if) -->
+        <img :src="postProp.imgUrl" class="card-img-top" alt="users posted picture">
         <div class="card-body">
           <p class="card-text">{{ postProp.body }}</p>
         </div>
         <ul class="list-group list-group-flush">
+          <!-- TODO click on this to like a post, will be similar to your delete, pay attention to the request type and request URLxs -->
           <li class="list-group-item mdi mdi-heart-outline">{{ postProp.likeIds.length }}</li>
         </ul>
-        <!-- NOTE may need v-if when profile is working to set conditional-->
-        <button @click="deletePost(postProp.id)" class="btn btn-outline-red" type="button">
+        <button v-if="postProp.creatorId == account?.id" @click="deletePost(postProp.id)" class="btn btn-outline-red"
+          type="button">
           Delete Post
         </button>
       </div>

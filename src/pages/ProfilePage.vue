@@ -1,8 +1,6 @@
 <script setup>
 import { AppState } from '@/AppState.js';
 import PostsCard from '../components/PostsCard.vue';
-import { Post } from '@/models/Post.js';
-import { Profile } from '@/models/Profile.js';
 import { computed, onMounted, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { Pop } from '@/utils/Pop.js';
@@ -10,9 +8,7 @@ import { logger } from '@/utils/Logger.js';
 import { profilesService } from '@/services/ProfilesService.js';
 import { postsService } from '@/services/PostsService.js';
 
-defineProps({
-  profileProp: { type: Profile, required: true }
-})
+// REVIEW our pages should never have props!
 
 const posts = computed(() => AppState.post)
 
@@ -32,7 +28,8 @@ watch(route, () => {
 
 async function getProfileById() {
   try {
-    const profileId = route.params.profileId
+    // FIXME make sure you are accessing the correct value from the route parameter here! (.id)
+    const profileId = route.params.id
     await profilesService.getProfileById(profileId)
   } catch (error) {
     Pop.error(error, 'Could not get profile by Id')
